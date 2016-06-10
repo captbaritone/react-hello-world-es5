@@ -44,48 +44,103 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(38);
+	'use strict';
 
-	var Greeter = React.createClass({
-	    displayName: 'Greeter',
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	    render: function () {
-	        return React.createElement(
-	            'h1',
-	            null,
-	            'Hello, ',
-	            this.props.name,
-	            '!'
-	        );
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(38);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var author = {
+	    first: 'Jordan',
+	    last: 'Eldredge'
+	};
+
+	var DEFAULT_NAME = 'Jordan';
+
+	function getGreeting(name) {
+	    var greeting = arguments.length <= 1 || arguments[1] === undefined ? 'Hello' : arguments[1];
+
+	    return greeting + ' ' + name + '!';
+	}
+
+	var Greeter = function (_React$Component) {
+	    _inherits(Greeter, _React$Component);
+
+	    function Greeter() {
+	        _classCallCheck(this, Greeter);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Greeter).apply(this, arguments));
 	    }
-	});
 
-	var Page = React.createClass({
-	    displayName: 'Page',
-
-	    getInitialState: function () {
-	        return { name: 'Jordan' };
-	    },
-	    handleNameChange: function (e) {
-	        this.setState({ name: e.target.value });
-	    },
-	    render: function () {
-	        return React.createElement(
-	            'div',
-	            null,
-	            React.createElement(Greeter, { name: this.state.name }),
-	            React.createElement(
-	                'p',
+	    _createClass(Greeter, [{
+	        key: 'render',
+	        value: function render() {
+	            var greeting = getGreeting(this.props.name, 'Welcome');
+	            return _react2.default.createElement(
+	                'h1',
 	                null,
-	                'What\'s your name?'
-	            ),
-	            React.createElement('input', { onChange: this.handleNameChange })
-	        );
-	    }
-	});
+	                greeting
+	            );
+	        }
+	    }]);
 
-	ReactDOM.render(React.createElement(Page, null), document.getElementById('example'));
+	    return Greeter;
+	}(_react2.default.Component);
+
+	;
+
+	var Page = function (_React$Component2) {
+	    _inherits(Page, _React$Component2);
+
+	    function Page(props) {
+	        _classCallCheck(this, Page);
+
+	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Page).call(this, props));
+
+	        _this2.state = { name: DEFAULT_NAME };
+	        return _this2;
+	    }
+
+	    _createClass(Page, [{
+	        key: 'handleNameChange',
+	        value: function handleNameChange(e) {
+	            this.setState({ name: e.target.value });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(Greeter, { name: this.state.name }),
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'What\'s your name?'
+	                ),
+	                _react2.default.createElement('input', { onChange: this.handleNameChange.bind(this) })
+	            );
+	        }
+	    }]);
+
+	    return Page;
+	}(_react2.default.Component);
+
+	;
+
+	(0, _reactDom.render)(_react2.default.createElement(Page, null), document.getElementById('example'));
 
 /***/ },
 /* 1 */
