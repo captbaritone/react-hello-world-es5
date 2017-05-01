@@ -19,3 +19,6 @@ Have Webpack rebuild when you modify files:
     npm run watch
 
 
+
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/captbaritone/react-hello-world-es5.svg)](https://greenkeeper.io/)
